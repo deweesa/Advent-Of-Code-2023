@@ -2,15 +2,28 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"os"
 	"strconv"
 	"unicode"
 )
 
+/*todo:
+- Get flags for verbose and testing
+- Clean up the get calibration method
+	- very repititive at the mometn
+*/
+
 func main() {
+	testingPtr := flag.Bool("t", false, "Use testing file")
+
 	filename := "day1.txt"
-	// filename := "test.txt"
+
+	if *testingPtr {
+		filename = "test.txt"
+	}
+
 	fmt.Print("loading file\n")
 	f, err := os.Open(filename)
 
