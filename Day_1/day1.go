@@ -19,18 +19,17 @@ func main() {
 	fileScanner := bufio.NewScanner(f)
 	fileScanner.Split(bufio.ScanLines)
 
-	calibration_sum := 0
+	calibrationSum := 0
 	for fileScanner.Scan() {
 		line := fileScanner.Text()
-		calibration_sum += get_calibration(line)
+		calibrationSum += getCalibration(line)
 	}
 
-	fmt.Printf("The total calibration is: %d", calibration_sum)
+	fmt.Printf("The total calibration is: %d\n", calibrationSum)
 	f.Close()
 }
 
-func get_calibration(line string) (calibration int) {
-	calibration = 0
+func getCalibration(line string) (calibration int) {
 	lastNum := 0
 	numberFound := false
 	secondNumberFound := false
@@ -53,7 +52,7 @@ func get_calibration(line string) (calibration int) {
 	} else {
 		calibration = (10 * calibration) + calibration
 	}
-	fmt.Println(line+": %d", calibration)
+	fmt.Printf(line+": %d\n", calibration)
 	return
 }
 
